@@ -3,22 +3,33 @@
 {% block content %}
 <content>
     <div class="row content">
-        <div class="col-12 col-sm-4">
+        <div class="col"></div>
+        <div class="col-12 col-sm-4 col-md-3">
             <h1>Thomas Eckert</h1>
+            <code>
             <p>
-                Some info about Thomas Eckert
+                Site Reliability Engineer<br />on Azure<br />at Microsoft
             </p>
+            </code>
+            <p>
+                <a href="https://github.com/t-eckert">GitHub</a>,
+                <a href="https://dev.to/teckert">Dev.To</a>,
+                <a href="https://twitter.com/_t_eckert_">Twitter</a>
+            </p>
+            <hr>
         </div>
-        <div class="col-12 col-sm-8">
+        <div class="col-12 col-sm-8 col-md-6">
             {% for post in posts %}
             <div class="post {{post.kind}}">
-                <code>{{ post.emoji }}{{ post.kind }}</code>
+                <span>{{ post.emoji }} </span><code><strong>{{ post.kind }}</strong></code>
                 <a href="{{post.link}}">
                     <h2>{{post.name}}</h2>
                 </a>
+                <span>{{ post.description }}</span>
             </div>
             {% endfor %}
         </div>
+        <div class="col"></div>
     </div>
 </content>
 {% endblock content %}
