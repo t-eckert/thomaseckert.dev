@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<content>
+    <div class="row content">
+        <div class="col-12 col-sm-4">
+            <h1>Thomas Eckert</h1>
+            <p>
+                Some info about Thomas Eckert
+            </p>
+        </div>
+        <div class="col-12 col-sm-8">
+            {% for post in posts %}
+            <div class="post {{post.kind}}">
+                <code>{{ post.emoji }}{{ post.kind }}</code>
+                <a href="{{post.link}}">
+                    <h2>{{post.name}}</h2>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</content>
+{% endblock content %}
