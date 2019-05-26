@@ -1,0 +1,55 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+variables:
+  # Replace this name with that of the Azure service connection in your DevOps project
+  ConnectedServiceName: PersonalAzure
+
+  # Replace this name to match the name of the App Service you created earlier
+  WebAppName: 'thomaseckertdev'
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.7'
+    architecture: 'x64'
+
+- script: |
+    python3.7 -m venv antenv
+    source antenv/bin/activate
+    pip3.7 install setuptools
+    pip3.7 install -r requirements.txt
+
+  # The displayName is shows in the pipeline UI when a build runs
+  displayName: 'Install Dependencies'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
+    replaceExistingArchive: true
+    verbose: # (no value); this input is optional
+
+- task: AzureRMWebAppDeployment@4
+  displayName: Azure App Service Deploy
+  inputs:
+    appType: webAppLinux
+    RuntimeStack: 'PYTHON|3.7'
+    ConnectedServiceName: $(ConnectedServiceName)
+    WebAppName: $(WebAppName)
+    Package: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
+
+    # The following parameter is specific to the Flask example code. You may
+    # or may not need a startup command for your own app.
+
+    StartupCommand: 'gunicorn --bind=0.0.0.0 --workers=4 startup:app'
