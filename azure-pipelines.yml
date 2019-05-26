@@ -5,7 +5,7 @@
 
 variables:
   # Replace this name with that of the Azure service connection in your DevOps project
-  ConnectedServiceName: PersonalAzure
+  ConnectedServiceName: Azure
 
   # Replace this name to match the name of the App Service you created earlier
   WebAppName: 'thomaseckert'
