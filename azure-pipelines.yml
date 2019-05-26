@@ -8,7 +8,7 @@ variables:
   ConnectedServiceName: PersonalAzure
 
   # Replace this name to match the name of the App Service you created earlier
-  WebAppName: 'thomaseckertdev'
+  WebAppName: 'thomaseckert'
 
 trigger:
 - master
