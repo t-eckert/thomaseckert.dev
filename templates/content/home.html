@@ -1,11 +1,10 @@
-{% extends "base.html" %}
+{% extends "container.html" %}
 
 {% block content %}
 <content>
     <div class="row content">
         <div class="col"></div>
         <div class="col-12 col-md-3">
-            <h1>Thomas Eckert</h1>
             <code>
             <p>
                 Site Reliability Engineer<br />on Azure<br />at Microsoft
@@ -16,18 +15,6 @@
                 <a href="https://dev.to/teckert">Dev.To</a>,
                 <a href="https://twitter.com/_t_eckert_">Twitter</a>
             </p>
-            <hr>
-        </div>
-        <div class="col-12 col-md-6">
-            {% for post in posts %}
-            <div class="post {{post.kind}}">
-                <span>{{ post.emoji }} </span><code><strong>{{ post.kind }}</strong></code>
-                <a href="{{post.url}}">
-                    <h2>{{post.name}}</h2>
-                </a>
-                <span>{{ post.description }}</span>
-            </div>
-            {% endfor %}
         </div>
         <div class="col"></div>
     </div>
