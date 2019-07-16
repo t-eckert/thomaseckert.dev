@@ -1,0 +1,15 @@
+
+.container {
+    max-width: 1000px;
+}
+
+.img-self {
+    border-radius: 100%;
+    margin: 10px 0px;
+}
+
+.navbar {
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+}

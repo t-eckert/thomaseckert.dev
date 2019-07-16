@@ -3,5 +3,12 @@
 {% block content %}
 
 <h1>{{active_page}}</h1>
+{% for document in collection %}
+<div>
+    {{ document["date"] }}
+    <a href="{{ document['url'] }}">{{ document["title"] }}</a>
+    {{ document["description"] }}
+</div>
+{% endfor %}
 
 {% endblock content %}

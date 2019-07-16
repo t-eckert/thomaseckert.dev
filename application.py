@@ -15,6 +15,11 @@ def about():
     return render_template("content/about.html", active_page="about")
 
 
+@app.route("/assets")
+def assets():
+    return render_template("assets.html")
+
+
 @app.route("/<collection>")
 def browse(collection: str):
     return render_template(
