@@ -1,26 +1,27 @@
+<!DOCTYPE html>
 {% extends "container.html" %}
 
 {% block content %}
 <content>
     <div class="row">
+        <div class="col-12 col-sm-4"></div>
         <div class="col-12 col-sm-4">
-            <code><p>
-                Site Reliability Engineer<br/> 
-                on Azure<br/>
-                at Microsoft
-            </p></code>
+            <code>
+                <p>
+                    Site Reliability Engineer<br />
+                    on Azure<br />
+                    at Microsoft
+                </p>
+            </code>
             <p>
                 <a href="https://github.com/t-eckert">GitHub</a>,<br />
                 <a href="https://dev.to/teckert">Dev.To</a>, <br />
                 <a href="https://twitter.com/_t_eckert_">Twitter</a>
             </p>
         </div>
-        <div class="col-12 col-sm-4">
-            <img src="{{ url_for('static', filename='images/self.jpeg') }}" alt="" class="img-thumbnail img-self">
-        </div>
-        <div class="col-12 col-sm-4">
 
-        </div>
+        <div class="col-12 col-sm-4"></div>
+
     </div>
 </content>
 {% endblock content %}
