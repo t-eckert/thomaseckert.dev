@@ -3,6 +3,9 @@
 
 {% block content %}
 
-<h1>Read</h1>
+<h1>{{ document["title"] }}</h1>
+<time>{{ document["date"]}}</time>
+
+{{ document["body"] |safe }}
 
 {% endblock content %}

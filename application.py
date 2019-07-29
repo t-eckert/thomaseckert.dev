@@ -7,12 +7,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("content/home.html", active_page="index")
+    return render_template("content/home.html", active_page="Index")
 
 
-@app.route("/about")
+@app.route("/About")
 def about():
-    return render_template("content/about.html", active_page="about")
+    return render_template("content/about.html", active_page="About")
 
 
 @app.route("/assets")
@@ -24,7 +24,7 @@ def assets():
 def browse(collection: str):
     return render_template(
         "content/browse.html",
-        active_page=collection,
+        active_page=collection.capitalize(),
         collection=get_collection(collection),
     )
 
