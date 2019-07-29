@@ -4,6 +4,9 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -193,7 +196,6 @@ a:not([href]):not([tabindex]):focus {
 }
 
 pre,
-code,
 kbd,
 samp {
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -535,15 +537,6 @@ mark,
     color: #6c757d;
 }
 
-code {
-    font-size: 87.5%;
-    color: #e83e8c;
-    word-break: break-word;
-}
-
-a>code {
-    color: inherit;
-}
 
 kbd {
     padding: 0.2rem 0.4rem;
@@ -563,12 +556,6 @@ pre {
     display: block;
     font-size: 87.5%;
     color: #212529;
-}
-
-pre code {
-    font-size: inherit;
-    color: inherit;
-    word-break: normal;
 }
 
 .pre-scrollable {
@@ -4979,20 +4966,6 @@ input[type="button"].btn-block {
 .navbar-dark .navbar-text a:hover,
 .navbar-dark .navbar-text a:focus {
     color: #fff;
-}
-
-.card {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
 }
 
 .card>hr {
@@ -11175,10 +11148,21 @@ a.text-dark:focus {
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --code-light: #fd9644;
     --code-dark: #fa8231;
+    --essay-light: #26de81;
+    --essay-dark: #20bf6b;
 }
 
 body {
     font-family: var(--font-family-sans-serif);
+}
+
+h1 {
+    font-family: "muli";
+    font-weight: bold;
+}
+
+code {
+    font-family: var(--font-family-monospace);
 }
 
 .container {
@@ -11197,6 +11181,7 @@ body {
 }
 
 .card {
+    color: #fff;
     margin: 8px 0;
     padding: 16px;
     position: relative;
@@ -11206,19 +11191,21 @@ body {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
     background-clip: border-box;
-    border: 0.25rem solid rgba(0, 0, 0);
     border-radius: 0.25rem;
     box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.125);
 }
 
-.card-code {
-    border-color: var(--code-light);
+.card>h1>a {
+    color: #fff;
 }
 
-.card-code>h1>a {
-    color: var(--code-dark);
+.card-code {
+    background: linear-gradient(to bottom right, var(--code-light), var(--code-dark));
+}
+
+.card-essay>h1>a {
+    color: var(--essay-dark);
 }
 
 .card>h1 {
@@ -11228,4 +11215,5 @@ body {
 
 .card>div>time {
     text-align: right;
+    vertical-align: text-bottom;
 }

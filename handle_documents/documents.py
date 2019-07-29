@@ -7,12 +7,14 @@ ESSAYS = {
         "url": "essays/an-essay-title",
         "description": "This is an essay about a topic that relates ideas in a unique way.",
         "body": "<p>This is an essay about a topic that relates ideas in a unique way</p>",
+        "cardClass": "card-essay",
     },
     "basketball-for-nerds": {
         "title": "Basketball for Nerds",
         "date": "10 April 2019",
         "url": "https://dev.to/teckert/basketball-for-nerds-5bf0",
         "description": "Exploring statistics with Python.",
+        "cardClass": "card-essay",
     },
 }
 
@@ -25,7 +27,7 @@ LINKS = {
         "cardClass": "card-code",
     },
     "copy-codepy-to-circuitpy-on-macos": {
-        "title": "Copy `code.py` to CIRCUITPY on MacOS",
+        "title": "Copy <code>code.py</code> to CIRCUITPY on MacOS",
         "date": "2 April 2019",
         "url": "https://gist.github.com/t-eckert/66ca8f83f35aff64fbe37326ffdb440f",
         "description": "This script deploys code from your working directory to an Adafruit CircuitPlayground Express",
