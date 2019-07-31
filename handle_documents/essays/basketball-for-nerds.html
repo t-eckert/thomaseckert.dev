@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<div class="text-center" style="font-size: 8rem">
+<div class="text-center" style="font-size: 8rem; text-shadow: 0rem 1rem 1rem rgba(0, 0, 0, 0.30)">
     🏀
 </div>
 <div class="row">
-    <div class="col">
-        <aside style="font-weight: 200">
-            <p>Inspired by a question in Gayle Laakmann McDowell's <a
-                    href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850/ref=sr_1_1?ie=UTF8">Cracking
-                    the Coding Interview</a>.
-            </p>
-        </aside>
-    </div>
-    <div class="col-12 col-sm-8 col-md-7">
+    <div class="col"></div>
+    <div class="col-12 col-md-8">
         <p>
             Let's say a friend challenges you to choose one of two games on the basketball court:
         </p>
@@ -31,7 +24,7 @@
             <code>p</code>,
             the chance of winning is also <code>p</code>. Let's write this as
         </p>
-        <pre><code>s_1(p) = p</code></pre>
+        <pre><code class="text-center">s_1(p) = p</code></pre>
         <p>
             where <code>s_1(p)</code> is the likelihood of winning the first game.
         </p>
@@ -81,7 +74,9 @@
         <p>
             We add the probability of making all shots to the probability of making two of three and get
         </p>
-        <pre><code>s_2(p) = p^3 + 3p^2(1 - p) = 3p^2 - 2p^3</code></pre>
+
+        <pre><code class="text-center">s_2(p) = p^3 + 3p^2(1 - p) = 3p^2 - 2p^3</code></pre>
+
         <h2>Playing the Game</h2>
         <p>
             Now the time has come to decide which game to play. The chance of winning each game depends upon
@@ -92,14 +87,17 @@
             To visualize the function, let's use <code>matplotlib</code> and <code>numpy</code>. We run <code>pip
                 install matplotlib</code> and in our code write
         </p>
+
         <pre><code>import matplotlib.pyplot as plt
 import numpy as np</code></pre>
+
         <p>
             Next, we need a function to calculate the likelihood of winning the first game (a single shot). This
             function will just return its input, but writing it down as a function will clairify our intent. We also
             will be more expressive with our naming convention here calling <code>p</code>,
             <code>single_shot_prob</code> and <code>s_1</code>, <code>one_shot_win_prob</code>.
         </p>
+
         <pre><code>def one_shot_win_prob(single_shot_prob: float) -&gt; float:
     """
     Calculates the probability of winning a game 
@@ -111,6 +109,7 @@ import numpy as np</code></pre>
             Similarly, we write a function for calculating <code>s_2</code> called
             <code>two_of_three_shot_win_prob</code>.
         </p>
+
         <pre><code>def two_of_three_shot_win_prob(single_shot_prob: float) -&gt; float:
     """
     Calculates the probability of winning a game
@@ -118,6 +117,7 @@ import numpy as np</code></pre>
     from the probability of making a single shot.
     """
     return 3*single_shot_prob**2 - 2*single_shot_prob**3</code></pre>
+
         <p>
             Now, let's go on a quick tangent about Python. <code>two_of_three_shot_win_prob</code> is a verbose name for
             a function. Sometimes that's appropriate. I think in a scenario where the intent of these functions is
@@ -125,12 +125,15 @@ import numpy as np</code></pre>
             usually write, perhaps in a codebase at a professional arbitrary basketball game probability company, the
             code would look like this:
         </p>
+
         <pre><code>def prob_win_2_by_3(p):
     # Win if 2/3 shots made.
     return 3*p**2 - 2*p**3</code></pre>
+
         <p>
             If you need the function for one quick thing, you can write it as a lambda:
         </p>
+
         <pre><code>win2by3 = lambda p : 3*p**2 - 2*p**3</code></pre>
         <p>
             All three ways to calculate the 2/3 game do the same thing. It's part of the craft of programming to
@@ -152,9 +155,11 @@ plt.xlabel("Probability of Making a Single Shot")
 plt.legend()
 plt.show()
         </code></pre>
+
         <p>
             Altogether, we get the code
         </p>
+
         <pre><code>import matplotlib.pyplot as plt
 import numpy as np
                 
@@ -187,8 +192,22 @@ plt.xlabel("Probability of Making a Single Shot")
 plt.legend()
 plt.show()</code></pre>
 
+        <p>Running this code gives us the plot</p>
+        <img src="https://thomaseckertdevimages.blob.core.windows.net/images/basketball-for-nerds-img-1.png"
+            class="img-fluid" alt="">
+        <p>We can see that if the probability of making a single shot is less than 0.5, game one is the best bet. If
+            that probability is greater than 0.5, game two is the best. If our probability of making a single shot is
+            exactly 0.5, we have the same chance of winning either game.
+        </p>
+        <p>
+            So which game will you play?
+        </p>
     </div>
-    <div class="col"></div>
+    <div class="col">
+        <aside>
+            Also posted to <a href="https://dev.to/teckert/basketball-for-nerds-5bf0">Dev</a>.
+        </aside>
+    </div>
 </div>
 
 </html>
