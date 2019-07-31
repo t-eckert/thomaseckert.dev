@@ -72,7 +72,6 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -11106,6 +11105,8 @@ a.text-dark:focus {
 
 /*# sourceMappingURL=bootstrap.css.map */
 
+/* Begin the CSS surgery... */
+
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -11149,8 +11150,20 @@ a.text-dark:focus {
     --green-dark: #20bf6b;
 }
 
+html {
+    background: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
 body {
     font-family: var(--font-family-sans-serif);
+}
+
+footer {
+    font-weight: 200;
+    font-size: 0.9rem;
 }
 
 h1 {
@@ -11258,6 +11271,39 @@ pre>code {
     border-radius: 0.25rem;
     box-shadow: 0px 4px 2px #4b658430;
     overflow: auto;
+}
+
+.pre-wrapper {
+    position: relative;
+}
+
+.pre-wrapper pre {
+    padding-top: 25px;
+}
+
+.pre-wrapper .copy-snippet {
+    border-radius: 0;
+    min-width: 55px;
+    background: none repeat scroll 0 0 transparent;
+    border: 1px solid #bbb;
+    color: #26589F;
+    font-family: 'HELEVETICA', sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.42rem;
+    margin: 0;
+    padding: 0px 5px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    position: absolute;
+    background: #ccc;
+    top: 0;
+    left: 0;
+}
+
+.pre-wrapper .copy-snippet:disabled {
+    color: #555;
 }
 
 aside {
