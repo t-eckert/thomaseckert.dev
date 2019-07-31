@@ -7,3 +7,4 @@ def get_collection(collection: str) -> dict:
 
 def get_document(collection: str, document: str) -> dict:
     return COLLECTIONS.get(collection).get(document)
+

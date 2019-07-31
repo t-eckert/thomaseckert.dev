@@ -4,7 +4,11 @@
 {% block content %}
 
 <h1>{{ document["title"] }}</h1>
-<time>{{ document["date"]}}</time>
+<p>
+    <time>{{ document["date"]}}</time><br />
+    {{ document['readTime'] }}
+</p>
+
 
 {{ document["body"] |safe }}
 

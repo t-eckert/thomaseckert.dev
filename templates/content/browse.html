@@ -7,17 +7,21 @@
 {% for document in collection %}
 <div class="row">
     <div class="col-sm-2 col-md-3"></div>
-    <div class="col card {{ document['cardClass'] }}">
+    <div class="col card {{ document['classes'] }}">
         <h1>
             <a href="{{ document['url'] }}">
-                {{ document["title"] | safe }}
+                {{ document['title'] | safe }}
             </a>
         </h1>
         <div class="row">
             <description class="col-8">
-                {{ document["description"] }}
+                {{ document['description'] }}
             </description>
-            <time class="col-4">{{ document["date"] }}</time>
+            <div class="col-4 metadata">
+                <div>{{ document['category'] }}</div>
+                <time>{{ document['date'] }}</time>
+            </div>
+
         </div>
     </div>
     <div class="col-sm-2 col-md-3"></div>

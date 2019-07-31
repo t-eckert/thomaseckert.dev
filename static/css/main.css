@@ -4527,18 +4527,7 @@ input[type="button"].btn-block {
     display: block;
 }
 
-.navbar {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-}
+.navbar {}
 
 .navbar>.container,
 .navbar>.container-fluid {
@@ -11146,10 +11135,14 @@ a.text-dark:focus {
     --breakpoint-xl: 1200px;
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --code-light: #fd9644;
-    --code-dark: #fa8231;
-    --essay-light: #26de81;
-    --essay-dark: #20bf6b;
+    --orange: #fd9644;
+    --orange-shadow: #fd964430;
+    --orange-light: #ffcfa7;
+    --orange-dark: #fa8231;
+    --green: #26de81;
+    --green-shadow: #26de8130;
+    --green-light: #ace6c9;
+    --green-dark: #20bf6b;
 }
 
 body {
@@ -11157,8 +11150,13 @@ body {
 }
 
 h1 {
-    font-family: "muli";
+    font-family: "muli", var(--font-family-sans-serif);
     font-weight: bold;
+}
+
+h2 {
+    font-family: "muli", var(--font-family-sans-serif);
+    font-weight: 600;
 }
 
 code {
@@ -11175,7 +11173,17 @@ code {
 }
 
 .navbar {
-    padding-bottom: 0;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    padding-bottom: 0.5rem;
     padding-left: 0;
     padding-right: 0;
 }
@@ -11201,11 +11209,23 @@ code {
 }
 
 .card-code {
-    background: linear-gradient(to bottom right, var(--code-light), var(--code-dark));
+    background: linear-gradient(to bottom right, var(--orange), var(--orange-dark));
+    box-shadow: 0px 4px 2px var(--orange-shadow);
 }
 
-.card-essay>h1>a {
-    color: var(--essay-dark);
+.card-code>.row>.metadata {
+    color: var(--orange-light);
+    text-align: right;
+}
+
+.card-essay {
+    background: linear-gradient(to bottom right, var(--green), var(--green-dark));
+    box-shadow: 0px 4px 2px var(--green-shadow);
+}
+
+.card-essay>.row>.metadata {
+    color: var(--green-light);
+    text-align: right;
 }
 
 .card>h1 {
@@ -11216,4 +11236,22 @@ code {
 .card>div>time {
     text-align: right;
     vertical-align: text-bottom;
+}
+
+pre>code {
+    background: #4b6584;
+    color: #fff;
+    margin: 8px 0;
+    padding: 16px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border-radius: 0.25rem;
+    box-shadow: 0px 4px 2px #4b658430;
+    overflow: auto;
 }

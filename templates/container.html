@@ -4,7 +4,7 @@
 {% set navigation_bar = ['Links', 'Essays', 'About'] -%}
 
 {% block container %}
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light sticky">
     <a class="navbar-brand" href="/">Thomas Eckert</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,15 +23,20 @@
     </div>
 </nav>
 
-
 {% block content %}
 {% endblock content %}
+
 <hr>
 <footer class="row">
     <div class="col">
-        <a href="https://flatuicolors.com/palette/de">Color palette</a>
-        by
-        <a href="http://www.martindavid.me/">Martin David</a></div>
+        <p>
+            <a href="https://flatuicolors.com/palette/de">Color palette</a>
+            by
+            <a href="http://www.martindavid.me/">Martin David</a>
+            <br />
+            <a href="https://github.com/t-eckert/thomaseckert.dev">Website Source Code</a>
+        </p>
+    </div>
     <div class="col text-right">
         <a href="https://github.com/t-eckert">GitHub</a>,
         <a href="https://dev.to/teckert">Dev.To</a>,
