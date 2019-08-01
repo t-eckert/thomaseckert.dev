@@ -3,30 +3,31 @@
 
 {% block content %}
 
-<h1>{{ active_page }}</h1>
-{% for document in collection %}
 <div class="row">
-    <div class="col-sm-2 col-md-3"></div>
-    <div class="col card {{ document['classes'] }}">
-        <h1>
-            <a href="{{ document['url'] }}">
-                {{ document['title'] | safe }}
-            </a>
-        </h1>
-        <div class="row">
-            <description class="col-8">
-                {{ document['description'] }}
-            </description>
-            <div class="col-4 metadata">
-                <div>{{ document['category'] }}</div>
-                <time>{{ document['date'] }}</time>
-            </div>
-
-        </div>
+    <div class="col">
+        <h1>{{ active_page.capitalize() }}</h1>
     </div>
-    <div class="col-sm-2 col-md-3"></div>
+    <div class="col-12 col-md-8">
+        {% for document in collection %}
+        <section class="card {{ document['classes'] }}">
+            <h1>
+                <a href="{{ document['url'] }}">
+                    {{ document['title'] | safe }}
+                </a>
+            </h1>
+            <div class="row">
+                <description class="col-8">
+                    {{ document['description'] }}
+                </description>
+                <div class="col-4 metadata">
+                    <div>{{ document['category'] }}</div>
+                    <time>{{ document['date'] }}</time>
+                </div>
+            </div>
+        </section>
+        {% endfor %}
+    </div>
+    <div class="col"></div>
 </div>
-
-{% endfor %}
 
 {% endblock content %}

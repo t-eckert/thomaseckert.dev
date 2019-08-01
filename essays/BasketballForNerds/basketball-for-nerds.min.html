@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><div class="text-center" style="font-size: 8rem; text-shadow: 0rem 1rem 1rem rgba(0, 0, 0, 0.30)">&#127936;</div><div class="row"> <div class="col"></div><div class="col-12 col-md-8"> <p> Let's say a friend challenges you to choose one of two games on the basketball court: </p><ol> <li>You have one chance to make one shot.</li><li>You have three chances to make two or more shots.</li></ol> <p> You want to win and you know the exact probability of making a shot <code>p</code>. Which game do you have a better chance of winning? </p><h2>Chance of Winning Game One</h2> <p> This game consists of one chance to make one shot. Because the likelihood of making a shot is known to be <code>p</code>, the chance of winning is also <code>p</code>. Let's write this as </p><pre><code class="text-center">s_1(p) = p</code></pre> <p> where <code>s_1(p)</code> is the likelihood of winning the first game. </p><h2>Chance of Winning Game Two</h2> <p> Here, the math gets trickier. Because you must make <em>at least</em> two of the three shots, there are four ways to win this game: </p><table class="table table-hover"> <thead> <th scope="col" class="text-center">First Shot</th> <th scope="col" class="text-center">Second Shot</th> <th scope="col" class="text-center">Third Shot</th> </thead> <tbody> <tr> <td class="text-center">&#127936;</td><td class="text-center">&#127936;</td><td></td></tr><tr> <td></td><td class="text-center">&#127936;</td><td class="text-center">&#127936;</td></tr><tr> <td class="text-center">&#127936;</td><td></td><td class="text-center">&#127936;</td></tr><tr> <td class="text-center">&#127936;</td><td class="text-center">&#127936;</td><td class="text-center">&#127936;</td></tr></tbody> </table> <p> The probability of making all three shots is the probability of making the first shot <em>times</em> making the second shot <em>times</em> making the third shot, <code>p^3</code>. </p><p> The probability of making two out of three shots is the probability of making two shots <code>p^2</code>, times the probability of not making one shot <code>1 - p</code>. There are three chances for this to happen. So combined, this is <code>3p^2(1 - p)</code>. </p><p> We add the probability of making all shots to the probability of making two of three and get </p><pre><code class="text-center">s_2(p) = p^3 + 3p^2(1 - p) = 3p^2 - 2p^3</code></pre> <h2>Playing the Game</h2> <p> Now the time has come to decide which game to play. The chance of winning each game depends upon <code>p</code>, which we recall is the likelihood of making a single shot. Let's write some Python to choose which game to play based on what <code>p</code> is. </p><p> To visualize the function, let's use <code>matplotlib</code> and <code>numpy</code>. We run <code>pip install matplotlib</code> and in our code write </p><pre><code>import matplotlib.pyplot as plt
+import numpy as np</code></pre> <p> Next, we need a function to calculate the likelihood of winning the first game (a single shot). This function will just return its input, but writing it down as a function will clairify our intent. We also will be more expressive with our naming convention here calling <code>p</code>, <code>single_shot_prob</code> and <code>s_1</code>, <code>one_shot_win_prob</code>. </p><pre><code>def one_shot_win_prob(single_shot_prob: float) -> float:
+    """
+    Calculates the probability of winning a game 
+    with one chance to make one shot
+    from the probability of making a singshot. 
+    """
+    return single_shot_prob</code></pre> <p> Similarly, we write a function for calculating <code>s_2</code> called <code>two_of_three_shot_win_prob</code>. </p><pre><code>def two_of_three_shot_win_prob(single_shot_prob: float) -> float:
+    """
+    Calculates the probability of winning a game
+    with three chances to make at least two shots
+    from the probability of making a single shot.
+    """
+    return 3*single_shot_prob**2 - 2*single_shot_prob**3</code></pre> <p> Now, let's go on a quick tangent about Python. <code>two_of_three_shot_win_prob</code> is a verbose name for a function. Sometimes that's appropriate. I think in a scenario where the intent of these functions is well-known by all programmers in a codebase, this would be <em>too</em> verbose. It is more verbose than I usually write, perhaps in a codebase at a professional arbitrary basketball game probability company, the code would look like this: </p><pre><code>def prob_win_2_by_3(p):
+    # Win if 2/3 shots made.
+    return 3*p**2 - 2*p**3</code></pre> <p> If you need the function for one quick thing, you can write it as a lambda: </p><pre><code>win2by3 = lambda p : 3*p**2 - 2*p**3</code></pre> <p> All three ways to calculate the 2/3 game do the same thing. It's part of the craft of programming to determine how you will write it. </p><p> Now that we have functions to calculate the probability of winning either game, we can plot both functions with respect to the likelihood of making a single shot. Let's vary this likelihood from 0 to 1 in steps of 0.01 and plot using <code>matplotlib</code>. </p><pre><code>p_range = np.linspace(0, 1, 100)
+one_shot_probs = [one_shot_win_prob(p) for p in p_range]
+two_by_three_shot_probs = [two_of_three_shot_win_prob(p) for p in p_range]
+
+plt.plot(p_range, one_shot_probs, label="One of One to Win")
+plt.plot(p_range, two_by_three_shot_probs, label="Two of Three to Win")
+plt.ylabel("Probability of Winning Game")
+plt.xlabel("Probability of Making a Single Shot")
+plt.legend()
+plt.show()
+        </code></pre> <p> Altogether, we get the code </p><pre><code>import matplotlib.pyplot as plt
+import numpy as np
+                
+
+def one_of_one_win_prob(shot_prob: float) -> float:
+    """
+    Calculates the probability of winning a game 
+    with one chance to make one shot.
+    """
+    return shot_prob
+                
+                
+def two_of_three_win_prob(shot_prob: float) -> float:
+    """
+    Calculates the probability of winning a game with
+    three chances to make at least two shots from the
+    probability of making a single shot.
+    """
+    return 3 * shot_prob ** 2 - 2 * shot_prob ** 3
+                
+                
+p_range = np.linspace(0, 1, 100)
+probs_1_of_1 = [one_of_one_win_prob(p) for p in p_range]
+probs_2_of_3 = [two_of_three_win_prob(p) for p in p_range]
+                
+plt.plot(p_range, probs_1_of_1, label="One of One to Win")
+plt.plot(p_range, probs_2_of_3, label="Two of Three to Win")
+plt.ylabel("Probability of Winning Game")
+plt.xlabel("Probability of Making a Single Shot")
+plt.legend()
+plt.show()</code></pre> <p>Running this code gives us the plot</p><img src="https://thomaseckertdevimages.blob.core.windows.net/images/basketball-for-nerds-img-1.png" class="img-fluid" alt=""> <p>We can see that if the probability of making a single shot is less than 0.5, game one is the best bet. If that probability is greater than 0.5, game two is the best. If our probability of making a single shot is exactly 0.5, we have the same chance of winning either game. </p><p> So which game will you play? </p></div><div class="col"> <aside> Also posted to <a href="https://dev.to/teckert/basketball-for-nerds-5bf0">Dev</a>. </aside> </div></div></html>

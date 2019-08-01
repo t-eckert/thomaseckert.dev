@@ -1,18 +1,17 @@
 from flask import Flask, render_template, url_for
-from post_catcher import posts
-from handle_documents import get_collection, get_document
+from documents import get_document, get_cards
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return render_template("content/home.html", active_page="Index")
+    return render_template("content/home.html", active_page="index")
 
 
-@app.route("/About")
+@app.route("/about")
 def about():
-    return render_template("content/about.html", active_page="About")
+    return render_template("content/about.html", active_page="about")
 
 
 @app.route("/assets")
@@ -23,19 +22,22 @@ def assets():
 @app.route("/<collection>")
 def browse(collection: str):
     return render_template(
-        "content/browse.html",
-        active_page=collection.capitalize(),
-        collection=get_collection(collection),
+        "content/browse.html", active_page=collection, collection=get_cards(collection)
     )
 
 
-@app.route("/<collection>/<document>")
-def read(collection: str, document: str):
+@app.route("/<collection>/<name>")
+def read(collection: str, name: str):
     return render_template(
         "content/read.html",
         active_page=collection,
-        document=get_document(collection, document),
+        document=get_document(collection, name),
     )
+
+
+@app.route("/humans.txt")
+def humans():
+    return "Hello fellow human."
 
 
 @app.route("/404")
