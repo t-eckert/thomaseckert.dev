@@ -1,0 +1,15 @@
+{
+  "name": "tailwind_css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss build styles.css -o ../thomaseckert_dev/static/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^1.2.0"
+  }
+}
